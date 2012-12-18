@@ -1,0 +1,37 @@
+{
+  "name": "lazy-controller",     // 拡張機能名
+  "version":"0.0.1",// バージョン：公開する時に必ず増やして行かなければ行けない値
+  "icons": {"1":"icon.png"},
+  "description": "youtubeプレイヤーをタブ移動無しで簡易的に操作できる", // 拡張機能の説明
+
+  "permissions":[
+    "tabs",
+    "http://www.youtube.com/",
+    "http://*/*",
+    "https://*/*",
+    "*://*/*"
+  ],
+    "content_scripts":[
+    {
+      "matches":["http://*/*","https://*/*","*://*/*"],
+      "js":["jquery-1.8.3.min.js","play.js", "pause.js","AutoReplay.js","NotAuto.js"]
+    }
+  ],
+  "background": {     // バックグラウンドで動く処理（Chrome起動時に呼ばれる）
+    "scripts": [
+      "background.js"
+    ]
+  },
+  
+  "browser_action": { // browser actionsを作る場合に必要な指定
+    "default_title": "",
+    //"default_icon": "icon.png",
+    "default_popup": "TabStart.html" // 押した時にポップアップメニューを表示する場合は指定
+  },
+
+  "manifest_version": 2,
+  "web_accessible_resources": [ 
+  // セキュリティの為、Ajax等で外部リソースにアクセス出来るファイルを指定しなければいけない
+  "jquery-1.8.3.min.js"
+  ]
+}
