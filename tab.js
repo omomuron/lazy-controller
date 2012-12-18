@@ -25,7 +25,7 @@ chrome.tabs.onRemoved.addListener(function(tabId) {
 
 //コントローラー作成
 function crateController(tabId){
-	//chrome.tabs.executeScript(tabId, {code:"var player = document.getElementById('movie_player')"});
+	chrome.tabs.executeScript(tabId, {code:"var player = document.getElementById('movie_player')"});
 	$("#controll-area").append("<div id='tabId-"+tabId+"' class='yt'></div>");
 
 	chrome.tabs.get(tabId,function(tab){
